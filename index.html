@@ -1,0 +1,151 @@
+<!--1. Создать функцию calculate(operand1, operand2, sign), где operand1 и operand2 — два числа, sign — знак арифметической операции.
+Функция должна расчитывать результат операции, исходя из переданного ей знака. 
+Функция должна проверять корректность введенных чисел и знака операции.
+Все аргументы для функции принять от пользователя.
+
+2. Создать функцию, возводящую число в степень, число и сама степень вводится пользователем
+
+3.  Создать игру "Камень-Ножницы-Бумага".
+ Выбор компьютера определяется строкой:  
+ "var computerChoice = Math.random();
+ alert(computerChoice);".
+ Math.random() выдает произвольное число в промежутке от 0 до 1, на основании этого можно построить принцип выбора решения компьютера.
+
+4. Напишите функцию, которая возвращает n-е число Фибоначчи. Для решения используйте цикл-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Java Script. Function</title>
+      
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+    
+            //Завдання 1//
+           var operand1 = +prompt("Введите 1-е число");
+           var operand2 = +prompt("Введите 2-е число");
+           var sign = prompt("Введите знак математической операции");
+    
+           function calculate(operand1, operand2, sign)
+           {
+            if(isNaN(operand1) || isNaN(operand2))
+            {
+                alert("Введите корректное число!");
+            }
+            else
+            {
+            switch(sign)
+            {
+                case "+":
+                return operand1 + operand2;
+                break;
+                case "-":
+                return operand1 - operand2;
+                break;
+                case "*":
+                return operand1 * operand2;
+                break;
+                case "/":
+                    if(operand2 == 0)
+                    {
+                        alert("На 0 делить нелья!");
+                    }
+                return operand1 / operand2;
+                break;
+                default:
+                alert("Вы ввели несуществующий знак!");
+                break;
+            }
+        }
+        }
+        var result = calculate(operand1, operand2, sign);
+            document.write("Результат математической операции: " + result);
+
+    //Завдання 3//
+    var computerChoice = Math.round(Math.random()*3);
+    var userChoice = +prompt("Сделайте свой выбор: 1 - камень, 2 - ножницы, 3 - бумага ")
+    function findComputerChoice()
+    {
+    if(computerChoice == 1)
+    {
+        computerChoice = "камень";
+    }
+    else if(computerChoice == 2)
+    {
+        computerChoice = "ножницы";
+    }
+    else
+    {
+        computerChoice = "бумага";
+    }
+    alert(computerChoice);
+    }
+   
+
+
+    function game(computerChoice, userChoice)
+    {
+        if(computerChoice == userChoice)
+        {
+            
+            document.write("<br>Ничья");
+           
+        }
+        else if(computerChoice == 1 && userChoice == 2 || computerChoice == 3 && userChoice == 1)
+        {
+           
+            document.write("<br>Выиграл компьютер");
+            
+        }
+       
+        else
+        {
+            
+        document.write("<br>Выиграл пользователь!");
+        
+        }
+    }
+    game(computerChoice, userChoice);
+    findComputerChoice();
+
+//Завдання 4//
+
+
+
+   function getFibonacciNumber() 
+   {
+    var n = +prompt("Задача 4. Введите количество чисел Фибоначчи, не меньше 1");
+    var firstValue = 1;
+    var secondValue = 2;
+    var nextValue = firstValue + secondValue;
+    if(n < 1 || isNaN(n))
+    {
+        document.write("Ошибка!!!");
+    }
+    else
+    {
+        document.write("<br> Ряд чисел Фибоначчи: ");
+        
+    for(var i = 1; i <= n; i++)
+    {
+        document.write(nextValue + ", ");
+        firstValue = secondValue;
+        secondValue = nextValue;
+        nextValue = firstValue + secondValue;
+    }
+    }
+    document.write("<br>Fibonacci number is " + nextValue );
+   }
+    getFibonacciNumber();
+
+
+           
+        </script>
+    </body>
+    </html>
